@@ -49,6 +49,39 @@ printarTabela tabela = do
 					putStrLn ((show(tabela!!3)) ++ " | " ++ (show(tabela!!4)) ++ " | " ++ (show(tabela!!5)))
 					putStrLn ((show(tabela!!6)) ++ " | " ++ (show(tabela!!7)) ++ " | " ++ (show(tabela!!8)))
 					putStrLn ("\n")
+verificaEmpate :: Tabela -> Bool
+verificaEmpate tabela
+		 |((length (intersect "123456789" tabela)) == 0) = True
+		 |otherwise = False
+
+verificaTabelaZ :: Tabela -> Bool
+verificaTabelaZ tabela
+		--linha
+		| (((tabela !! 0) == 'O') && ((tabela !! 1) == 'O') && ((tabela !! 2) == 'O')) = True
+		| (((tabela !! 3) == 'O') && ((tabela !! 4) == 'O') && ((tabela !! 5) == 'O')) = True
+		| (((tabela !! 6) == 'O') && ((tabela !! 7) == 'O') && ((tabela !! 8) == 'O')) = True
+		--coluna
+		| (((tabela !! 0) == 'O') && ((tabela !! 3) == 'O') && ((tabela !! 6) == 'O')) = True
+		| (((tabela !! 1) == 'O') && ((tabela !! 4) == 'O') && ((tabela !! 7) == 'O')) = True
+		| (((tabela !! 2) == 'O') && ((tabela !! 5) == 'O') && ((tabela !! 8) == 'O')) = True
+		--diagonal
+		| (((tabela !! 0) == 'O') && ((tabela !! 4) == 'O') && ((tabela !! 8) == 'O')) = True
+		| (((tabela !! 2) == 'O') && ((tabela !! 4) == 'O') && ((tabela !! 6) == 'O')) = True
+
+verificaTabelaX :: Tabela -> Bool
+verificaTabelaX tabela
+		--linha
+		| (((tabela !! 0) == 'X') && ((tabela !! 1) == 'X') && ((tabela !! 2) == 'X')) = True
+		| (((tabela !! 3) == 'X') && ((tabela !! 4) == 'X') && ((tabela !! 5) == 'X')) = True
+		| (((tabela !! 6) == 'X') && ((tabela !! 7) == 'X') && ((tabela !! 8) == 'X')) = True
+		--coluna
+		| (((tabela !! 0) == 'X') && ((tabela !! 3) == 'X') && ((tabela !! 6) == 'X')) = True
+		| (((tabela !! 1) == 'X') && ((tabela !! 4) == 'X') && ((tabela !! 7) == 'X')) = True
+		| (((tabela !! 2) == 'X') && ((tabela !! 5) == 'X') && ((tabela !! 8) == 'X')) = True
+		--diagonal
+		| (((tabela !! 0) == 'X') && ((tabela !! 4) == 'X') && ((tabela !! 8) == 'X')) = True
+		| (((tabela !! 2) == 'X') && ((tabela !! 4) == 'X') && ((tabela !! 6) == 'X')) = True
+		| otherwise = False
 
 
 colocaXOuYNaTabela :: Char -> Char -> Tabela -> Tabela
