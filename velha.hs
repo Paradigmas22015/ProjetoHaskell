@@ -45,8 +45,13 @@ rodarJogo tabela jogador1 jogador2 vez =  do
 
 printarTabela :: Tabela -> IO()
 printarTabela tabela = do
+					putStr "             "
 					putStrLn ((show(tabela!!0)) ++ " | " ++ (show(tabela!!1)) ++ " | " ++ (show(tabela!!2)))
+					putStrLn "             --------------"
+					putStr "             "
 					putStrLn ((show(tabela!!3)) ++ " | " ++ (show(tabela!!4)) ++ " | " ++ (show(tabela!!5)))
+					putStrLn "             --------------"
+					putStr "             "
 					putStrLn ((show(tabela!!6)) ++ " | " ++ (show(tabela!!7)) ++ " | " ++ (show(tabela!!8)))
 					putStrLn ("\n")
 
