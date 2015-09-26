@@ -8,10 +8,18 @@ type Tabela = [Char]
 
 cadastrarJogadores :: IO()
 cadastrarJogadores = do
-					putStrLn "Informe o nome do Jogador 1: ";
+					clear --ou clearScreen Função para limpar tela em windows
+					putStrLn " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+					putStrLn "      Bem Vindo ao Jogo da vellha"
+					putStrLn " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+					putStrLn "      Informe o nome do Jogador 1: ";
+					putStrLn " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
 					jogador1 <- getLine;
-					putStrLn "Informe o nome do Jogador 2: ";
+					putStrLn " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+					putStrLn "      Informe o nome do Jogador 2: ";
+					putStrLn " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
 					jogador2 <- getLine;
+					clear--ou clearScreen Função para limpar tela em windows
 					iniciarJogo jogador1 jogador2
 
 iniciarJogo :: String -> String -> IO()
@@ -62,8 +70,7 @@ rodarJogo tabela jogador1 jogador2 vez =  do
 
 printarTabela :: Tabela -> IO()
 printarTabela tabela = do
-					--clearScreen Função para limpar tela em windows
-					clear
+					clear --ou clearScreen Função para limpar tela em windows
 					putStr "             "
 					putStrLn ((show(tabela!!0)) ++ " | " ++ (show(tabela!!1)) ++ " | " ++ (show(tabela!!2)))
 					putStrLn "             --------------"
