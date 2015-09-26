@@ -1,9 +1,10 @@
+--import Graphics.UI.Gtk biblioteca gráfica
 import Data.List
+--import System.Console.ANSI biblioteca para limpar tela no windows
 
 type Nome = String
 type Vez = Int
 type Tabela = [Char]
-
 
 cadastrarJogadores :: IO()
 cadastrarJogadores = do
@@ -16,14 +17,14 @@ cadastrarJogadores = do
 iniciarJogo :: String -> String -> IO()
 iniciarJogo jogador1 jogador2 = do
 					putStrLn ("\nPrepare-se para ver a batalha \""
-						++ jogador1 ++ " é X" ++ " **VS** " ++ jogador2 ++ " é 0." ++ "\"... \n AEWWWW")
+						++ jogador1 ++ " é X" ++ " **VS** " ++ jogador2 ++ " é 0." ++ "\"... \n")
 					putStrLn ("Vamos comecar!")
 					rodarJogo ['1','2','3','4','5','6','7','8','9'] jogador1 jogador2 0
 
 rodarJogo :: Tabela -> Nome -> Nome -> Vez-> IO()
 rodarJogo tabela jogador1 jogador2 vez =  do
 					printarTabela tabela
-					if (verificaTabelaX tabela) then do 
+					if (verificaTabelaX tabela) then do
 						putStrLn (jogador1 ++ " Venceu. Parabens!!!")
 						else do
 						if (verificaTabelaZ tabela) then do
@@ -59,9 +60,10 @@ rodarJogo tabela jogador1 jogador2 vez =  do
 									else
 										rodarJogo (colocaXOuYNaTabela 'O' opcao tabela) jogador1 jogador2 0
 
-
 printarTabela :: Tabela -> IO()
 printarTabela tabela = do
+					--clearScreen Função para limpar tela em windows
+					clear
 					putStr "             "
 					putStrLn ((show(tabela!!0)) ++ " | " ++ (show(tabela!!1)) ++ " | " ++ (show(tabela!!2)))
 					putStrLn "             --------------"
@@ -76,12 +78,14 @@ colocaXOuYNaTabela :: Char -> Char -> Tabela -> Tabela
 colocaXOuYNaTabela identificador posicao (h:t)
 		| (h == posicao) = (identificador:t)
 		| otherwise = h:(colocaXOuYNaTabela identificador posicao t)
-		--putStrLn ("Essa função deverar colocar o identificado na posicao da tabela")
+		--"Essa função deverar colocar o identificado na posicao da tabela"
 
 verificaEmpate :: Tabela -> Bool
 verificaEmpate tabela
 		 |((length (intersect "123456789" tabela)) == 0) = True
 		 |otherwise = False
+		 --Função que retorna verdadeiro se o tamanho da interceção das duas listas forem 0
+		 --Ou seja todos os elementos são diferentes dos originais, que são apenas números
 
 verificaTabelaX :: Tabela -> Bool
 verificaTabelaX tabela
@@ -112,3 +116,6 @@ verificaTabelaZ tabela
 		| (((tabela !! 0) == 'O') && ((tabela !! 4) == 'O') && ((tabela !! 8) == 'O')) = True
 		| (((tabela !! 2) == 'O') && ((tabela !! 4) == 'O') && ((tabela !! 6) == 'O')) = True
 		| otherwise = False
+
+clear = putStr "\ESC[2J"
+--Função para limpar a tela
