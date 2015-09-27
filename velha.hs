@@ -1,3 +1,6 @@
+module JogoDaVelha (novoJogo)
+where
+
 --import Graphics.UI.Gtk biblioteca gráfica
 import Data.List
 --import System.Console.ANSI biblioteca para limpar tela no windows
@@ -5,6 +8,10 @@ import Data.List
 type Nome = String
 type Vez = Int
 type Tabela = [Char]
+
+novoJogo :: IO()
+novoJogo = cadastrarJogadores
+
 
 cadastrarJogadores :: IO()
 cadastrarJogadores = do
@@ -85,7 +92,7 @@ colocaXOuYNaTabela :: Char -> Char -> Tabela -> Tabela
 colocaXOuYNaTabela identificador posicao (h:t)
 		| (h == posicao) = (identificador:t)
 		| otherwise = h:(colocaXOuYNaTabela identificador posicao t)
-		--"Essa função deverar colocar o identificado na posicao da tabela"
+		--Essa função deverar colocar o identificador na posicao da tabela
 
 verificaEmpate :: Tabela -> Bool
 verificaEmpate tabela
