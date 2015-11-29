@@ -1,2 +1,2 @@
 # ProjetoHaskell
-Aplicação web desenvolvida na disciplina de Paradigmas de Programação da UnB - Faculdade Gama.
+Mini Aplicação desenvolvida na disciplina de Paradigmas de Programação da UnB - Faculdade Gama.
